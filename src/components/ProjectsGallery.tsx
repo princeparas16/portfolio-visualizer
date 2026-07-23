@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { usePortfolioStore } from '@/store/portfolio-store';
-import Image from 'next/image';
+import { assetPath } from '@/lib/base-path';
 
 export default function ProjectsGallery() {
   const { projects } = usePortfolioStore();
@@ -37,12 +37,11 @@ export default function ProjectsGallery() {
                 style={{ height: '200px' }}
               >
                 {project.imageUrl ? (
-                  <Image
-                    src={project.imageUrl}
+                  <img
+                    src={assetPath(project.imageUrl)}
                     alt={project.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover w-full h-full"
+                    loading="lazy"
                   />
                 ) : (
                   <div

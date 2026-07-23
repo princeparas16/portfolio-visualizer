@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Download, RefreshCw, LogIn, LogOut, ShieldCheck, FileUp, Check } from 'lucide-react';
+import { assetPath } from '@/lib/base-path';
 
 interface HeaderProps {
   onSyncClick: () => void;
@@ -63,6 +64,43 @@ export default function Header({
       e.target.value = '';
     }
   };
+
+  const handleDownloadCv = useCallback(
+    async (e: React.MouseEvent) => {
+      e.preventDefault();
+      setIsDownloadPressed(true);
+
+      try {
+        if (customCvUrl) {
+          // Custom uploaded CV — already a data URL
+          const link = document.createElement('a');
+          link.href = customCvUrl;
+          link.download = customCvFileName || 'Prince_Varti_Resume.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        } else {
+          // Default resume — fetch as blob to force proper download
+          const url = assetPath('/resume.pdf');
+          const res = await fetch(url);
+          const blob = await res.blob();
+          const blobUrl = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = blobUrl;
+          link.download = 'Prince_Varti_Resume.pdf';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(blobUrl);
+        }
+      } catch (err) {
+        console.error('Download failed:', err);
+      } finally {
+        setIsDownloadPressed(false);
+      }
+    },
+    [customCvUrl, customCvFileName]
+  );
 
   return (
     <>
@@ -125,24 +163,15 @@ export default function Header({
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               {/* Download CV (always visible, downloads custom CV if uploaded) */}
-              <a
-                href={
-                  customCvUrl ||
-                  (process.env.NODE_ENV === 'production'
-                    ? '/portfolio-visualizer/resume.pdf'
-                    : '/resume.pdf')
-                }
-                download={customCvFileName || 'Prince_Varti_Resume.pdf'}
+              <button
                 className={`neu-btn text-xs ${isDownloadPressed ? 'pressed' : ''}`}
-                onMouseDown={() => setIsDownloadPressed(true)}
-                onMouseUp={() => setIsDownloadPressed(false)}
-                onMouseLeave={() => setIsDownloadPressed(false)}
+                onClick={handleDownloadCv}
                 title={customCvFileName ? `Download ${customCvFileName}` : 'Download CV'}
               >
                 <Download size={14} />
                 <span className="hidden sm:inline">Download CV</span>
                 <span className="sm:hidden">CV</span>
-              </a>
+              </button>
 
               {/* Sync via PDF & Update CV — ONLY shown when logged in */}
               <AnimatePresence>

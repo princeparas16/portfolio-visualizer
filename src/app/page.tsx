@@ -24,9 +24,16 @@ export default function Home() {
   const [customCvFileName, setCustomCvFileName] = useState<string | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  // Load custom CV from localStorage on mount
+  // Load saved state from localStorage on mount
   useEffect(() => {
     try {
+      // Restore login state
+      const savedLogin = localStorage.getItem('portfolio_is_logged_in');
+      if (savedLogin === 'true') {
+        setIsLoggedIn(true);
+      }
+
+      // Restore custom CV
       const savedData = localStorage.getItem('portfolio_custom_cv_url');
       const savedName = localStorage.getItem('portfolio_custom_cv_name');
       if (savedData) {
@@ -34,16 +41,22 @@ export default function Home() {
         setCustomCvFileName(savedName || 'Prince_Varti_Resume.pdf');
       }
     } catch (e) {
-      console.error('Failed to load custom CV from storage', e);
+      console.error('Failed to load state from storage', e);
     }
   }, []);
 
   const handleLoginSuccess = () => {
     setIsLoggedIn(true);
+    try {
+      localStorage.setItem('portfolio_is_logged_in', 'true');
+    } catch (e) { /* ignore */ }
   };
 
   const handleLogout = () => {
     setIsLoggedIn(false);
+    try {
+      localStorage.removeItem('portfolio_is_logged_in');
+    } catch (e) { /* ignore */ }
   };
 
   const handleUpdateCv = (file: File) => {
