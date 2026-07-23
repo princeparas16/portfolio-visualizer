@@ -126,7 +126,12 @@ export default function Header({
             >
               {/* Download CV (always visible, downloads custom CV if uploaded) */}
               <a
-                href={customCvUrl || '/resume.pdf'}
+                href={
+                  customCvUrl ||
+                  (process.env.NODE_ENV === 'production'
+                    ? '/portfolio-visualizer/resume.pdf'
+                    : '/resume.pdf')
+                }
                 download={customCvFileName || 'Prince_Varti_Resume.pdf'}
                 className={`neu-btn text-xs ${isDownloadPressed ? 'pressed' : ''}`}
                 onMouseDown={() => setIsDownloadPressed(true)}
