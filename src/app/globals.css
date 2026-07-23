@@ -1,0 +1,237 @@
+@import "tailwindcss";
+
+/* ============================================
+   NEUMORPHIC DESIGN SYSTEM
+   Base: #e0e0e0 | Light source: Top-Left
+   ============================================ */
+
+:root {
+  --bg-base: #e0e0e0;
+  --shadow-light: #ffffff;
+  --shadow-dark: #bebebe;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --accent-cyan: rgba(6, 182, 212, 0.4);
+  --accent-purple: rgba(168, 85, 247, 0.4);
+  --accent-cyan-solid: #06b6d4;
+  --accent-purple-solid: #a855f7;
+
+  /* Shadows */
+  --neu-convex-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+  --neu-concave-shadow: inset 8px 8px 16px var(--shadow-dark), inset -8px -8px 16px var(--shadow-light);
+  --neu-pressed-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
+  --glow-cyan-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light), 0 0 15px var(--accent-cyan);
+  --glow-purple-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light), 0 0 15px var(--accent-purple);
+}
+
+@theme inline {
+  --color-background: var(--bg-base);
+  --color-foreground: var(--text-primary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-accent-cyan: #06b6d4;
+  --color-accent-purple: #a855f7;
+  --color-neu-base: #e0e0e0;
+  --color-shadow-light: #ffffff;
+  --color-shadow-dark: #bebebe;
+}
+
+/* ============================================
+   GLOBAL BASE STYLES
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(6, 182, 212, 0.25);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   NEUMORPHIC UTILITY CLASSES
+   ============================================ */
+
+/* Flat — base surface level, no shadows */
+.neu-flat {
+  background: var(--bg-base);
+  border-radius: 16px;
+}
+
+/* Convex — protruding (cards, buttons) */
+.neu-convex {
+  background: var(--bg-base);
+  border-radius: 16px;
+  box-shadow: var(--neu-convex-shadow);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.neu-convex:hover {
+  box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+}
+
+/* Concave — recessed (inputs, expanded details, header) */
+.neu-concave {
+  background: var(--bg-base);
+  border-radius: 16px;
+  box-shadow: var(--neu-concave-shadow);
+}
+
+/* Pressed — active state for buttons */
+.neu-pressed {
+  background: var(--bg-base);
+  border-radius: 16px;
+  box-shadow: var(--neu-pressed-shadow);
+}
+
+/* Glow Cyan — convex with cyan backlight */
+.glow-cyan {
+  background: var(--bg-base);
+  border-radius: 16px;
+  box-shadow: var(--glow-cyan-shadow);
+  border-left: 3px solid var(--accent-cyan-solid);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.glow-cyan:hover {
+  box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light), 0 0 25px var(--accent-cyan);
+}
+
+/* Glow Purple — convex with purple backlight */
+.glow-purple {
+  background: var(--bg-base);
+  border-radius: 16px;
+  box-shadow: var(--glow-purple-shadow);
+  border-left: 3px solid var(--accent-purple-solid);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.glow-purple:hover {
+  box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light), 0 0 25px var(--accent-purple);
+}
+
+/* ============================================
+   NEUMORPHIC BUTTON STYLES
+   ============================================ */
+
+.neu-btn {
+  background: var(--bg-base);
+  border: none;
+  border-radius: 12px;
+  box-shadow: var(--neu-convex-shadow);
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.neu-btn:hover {
+  box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+}
+
+.neu-btn:active,
+.neu-btn.pressed {
+  box-shadow: var(--neu-pressed-shadow);
+  transform: scale(0.98);
+}
+
+.neu-btn-icon {
+  background: var(--bg-base);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+  color: var(--text-secondary);
+}
+
+.neu-btn-icon:hover {
+  box-shadow: 7px 7px 14px var(--shadow-dark), -7px -7px 14px var(--shadow-light);
+  color: var(--text-primary);
+}
+
+.neu-btn-icon:active {
+  box-shadow: inset 3px 3px 6px var(--shadow-dark), inset -3px -3px 6px var(--shadow-light);
+  transform: scale(0.95);
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--shadow-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}
+
+/* ============================================
+   SECTION TITLES
+   ============================================ */
+
+.section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+/* ============================================
+   RESPONSIVE UTILS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .neu-convex {
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light);
+  }
+
+  .neu-convex:hover {
+    box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+  }
+
+  .glow-cyan {
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light), 0 0 10px var(--accent-cyan);
+  }
+
+  .glow-purple {
+    box-shadow: 5px 5px 10px var(--shadow-dark), -5px -5px 10px var(--shadow-light), 0 0 10px var(--accent-purple);
+  }
+}
