@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Download, RefreshCw, LogIn, LogOut, ShieldCheck, FileUp, Check } from 'lucide-react';
-import { assetPath } from '@/lib/base-path';
+import { assetPath, downloadPdfFile } from '@/lib/base-path';
 
 interface HeaderProps {
   onSyncClick: () => void;
@@ -66,38 +66,13 @@ export default function Header({
   };
 
   const handleDownloadCv = useCallback(
-    async (e: React.MouseEvent) => {
+    (e: React.MouseEvent) => {
       e.preventDefault();
       setIsDownloadPressed(true);
-
-      try {
-        if (customCvUrl) {
-          // Custom uploaded CV — already a data URL
-          const link = document.createElement('a');
-          link.href = customCvUrl;
-          link.download = customCvFileName || 'Prince_Varti_Resume.pdf';
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        } else {
-          // Default resume — fetch as blob to force proper download
-          const url = assetPath('/resume.pdf');
-          const res = await fetch(url);
-          const blob = await res.blob();
-          const blobUrl = URL.createObjectURL(blob);
-          const link = document.createElement('a');
-          link.href = blobUrl;
-          link.download = 'Prince_Varti_Resume.pdf';
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          URL.revokeObjectURL(blobUrl);
-        }
-      } catch (err) {
-        console.error('Download failed:', err);
-      } finally {
-        setIsDownloadPressed(false);
-      }
+      const targetUrl = customCvUrl || '/resume.pdf';
+      const targetFilename = customCvFileName || 'PRINCE_VARTI.pdf';
+      downloadPdfFile(targetUrl, targetFilename);
+      setTimeout(() => setIsDownloadPressed(false), 500);
     },
     [customCvUrl, customCvFileName]
   );

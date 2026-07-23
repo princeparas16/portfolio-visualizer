@@ -9,22 +9,26 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Prince Varti | Senior Frontend Engineer — Portfolio",
+  title: "Prince Varti | Senior Software Engineer | AI/UI Engineer",
   description:
-    "Portfolio of Prince Varti, Senior Frontend Engineer with 7.5+ years building intelligent, enterprise-grade systems with React, Next.js, and LLM integration.",
+    "Portfolio of Prince Varti, Senior Software Engineer | AI/UI Engineer with 7.5+ years building intelligent, enterprise-grade systems with React, Node.js, Python, FastAPI, and Agentic AI/LLM integration.",
   keywords: [
     "Prince Varti",
-    "Senior Frontend Engineer",
+    "Senior Software Engineer",
+    "AI/UI Engineer",
+    "Agentic AI",
     "React",
     "Next.js",
+    "FastAPI",
+    "Python",
+    "RAG",
     "Portfolio",
     "LLM",
-    "AI",
   ],
   openGraph: {
-    title: "Prince Varti | Senior Frontend Engineer",
+    title: "Prince Varti | Senior Software Engineer | AI/UI Engineer",
     description:
-      "Building Intelligent, Enterprise Systems. 7.5+ Years Experience.",
+      "Building Intelligent, Enterprise Systems & Agentic AI Workflows. 7.5+ Years Experience.",
     type: "website",
   },
 };

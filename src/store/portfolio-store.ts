@@ -4,65 +4,101 @@ import type { PortfolioState, ParsedResumeData } from '@/types/portfolio';
 const defaultState: PortfolioState = {
   contact: {
     name: 'Prince Varti',
-    title: 'Senior Frontend Engineer',
+    title: 'Senior Software Engineer | AI/UI Engineer',
     summary:
-      'Expertise in modern React (Next.js), Node.js, and leading full-stack architecture. Delivering scalable, high-performance retail products and integrating LLM-powered intelligence capabilities.',
+      'Senior Software Engineer with 7.5 years of experience delivering scalable, enterprise-grade retail applications and modern frontend architectures using React, Node.js, AWS, and Micro-Frontends. Expanded into AI Engineering skills—designing and implementing LLM-powered operational intelligence features, Agentic AI workflows, and RAG architectures for 7-Eleven using Python, FastAPI, LangChain/LangGraph, Vector DB and frontier models. Proven track record of leading end-to-end feature ownership, driving front-end architectural decisions across multi-region environments, reducing production defects by 20%, and accelerating software delivery across the SDLC.',
     email: 'princevarti@gmail.com',
     phone: '+91-7974789232',
     location: 'Bengaluru',
-    github: 'https://github.com/princevarti',
+    github: 'https://github.com/princeparas16',
     linkedin: 'https://linkedin.com/in/princevarti',
     hashnode: 'https://hashnode.com/@princevarti',
   },
   skills: [
     {
-      id: 'frontend',
-      title: 'CORE FRONTEND EXPERTISE',
-      level: 'Expert',
-      summary: 'React 19, Next.js, Redux, TypeScript, Webpack, Micro-Frontends, Accessibility (WCAG), SCSS',
+      id: 'ai-agentic',
+      title: 'AI & AGENTIC ENGINEERING',
+      summary: 'Agentic AI, LLM Integration, RAG, MCP, LangChain, LangGraph, Vector DBs, Multi-Agent Systems',
       items: [
-        'React 19 (+8.1)',
-        'Next.js 14',
-        'TypeScript 5 (+3.6)',
-        'TypeScript 5 (+3.9)',
-        'Webpack',
-        'Micro-Frontends',
-        'WCAG, SCSS',
-      ],
-      glow: 'cyan',
-    },
-    {
-      id: 'ai',
-      title: 'AI & INTELLIGENCE INTEGRATION',
-      summary: 'LLM Integration, RAG, VectorDB, Similarity Search, Gemini/Mistral Models',
-      items: [
-        'LLM Integrations',
-        'Similarity Search, VectorDB',
-        'Similarity Search/Mistral Models',
-        'Accessibility Search',
-        'Testing Strategies',
-        'GeminDB',
-        'Mistral Models',
+        'Agentic AI',
+        'LLM Integration & RAG',
+        'Model Context Protocol (MCP)',
+        'LangChain & LangGraph',
+        'Vector DBs (FAISS, Pinecone)',
+        'Prompt Engineering & Guardrails',
+        'WebSockets / WebRTC',
+        'LLM Evaluation & Observability',
       ],
       glow: 'purple',
     },
     {
+      id: 'frontend',
+      title: 'FRONTEND ENGINEERING',
+      level: 'Expert',
+      summary: 'React.js, Next.js, Redux Toolkit, Micro-Frontend Architecture, Webpack, WCAG 2.1 AAA',
+      items: [
+        'React.js (16 → 19 Upgrade)',
+        'Next.js',
+        'Redux / Redux Toolkit',
+        'Micro-Frontend Architecture',
+        'Webpack',
+        'Responsive Design',
+        'Accessibility (WCAG 2.1 AAA)',
+        'TypeScript / SCSS',
+      ],
+      glow: 'cyan',
+    },
+    {
       id: 'backend',
-      title: 'Backend',
-      summary: 'Python, FastAPI, Node.js, Express, REST APIs',
-      items: ['Python', 'FastAPI', 'Node.js', 'Express', 'REST APIs', 'GraphQL', 'PostgreSQL'],
+      title: 'BACKEND & API ARCHITECTURE',
+      summary: 'FastAPI, Node.js, Express, RESTful APIs, Microservices, GraphQL, OAuth2/JWT',
+      items: [
+        'Python',
+        'FastAPI',
+        'Node.js & Express',
+        'RESTful APIs',
+        'Microservices Architecture',
+        'GraphQL',
+        'Authentication (OAuth2 / JWT)',
+      ],
     },
     {
       id: 'cloud',
-      title: 'Cloud & Infra',
-      summary: 'AWS, ECS, S3, Docker',
-      items: ['AWS ECS', 'S3', 'Docker', 'CI/CD Pipelines', 'Terraform'],
+      title: 'CLOUD & INFRASTRUCTURE',
+      summary: 'AWS (EC2, Lambda, ECS, ECR, S3, CloudFront), Docker, Jenkins, SonarQube, CI/CD',
+      items: [
+        'AWS (EC2, Lambda, ECS, S3)',
+        'CloudFront & CloudWatch',
+        'Docker',
+        'Jenkins & GitLab Pipelines',
+        'SonarQube & ORCA',
+        'CI/CD Automation',
+      ],
     },
     {
       id: 'data',
-      title: 'Data/Observability',
-      summary: 'New Relic, Datadog, Mixpanel',
-      items: ['New Relic', 'Datadog', 'Mixpanel', 'Sentry', 'Performance Monitoring'],
+      title: 'DATA & OBSERVABILITY',
+      summary: 'New Relic, Datadog, MongoDB (Aggregations), Redis (Caching & Pub/Sub), MySQL',
+      items: [
+        'New Relic (Logs, Metrics, Traces)',
+        'Datadog',
+        'MongoDB (Aggregations)',
+        'Redis (Caching & Pub/Sub)',
+        'Mongoose & MySQL',
+      ],
+    },
+    {
+      id: 'tools',
+      title: 'PROGRAMMING & CORE TOOLING',
+      summary: 'Python, JavaScript (ES6+), TypeScript, HTML5, SCSS, Windsurf, Claude Code, Copilot, Antigravity',
+      items: [
+        'Python',
+        'JavaScript (ES6+) & TypeScript',
+        'HTML5 & CSS3/SCSS',
+        'Windsurf & Claude Code',
+        'GitHub Copilot & Antigravity',
+        'PIP & UV Package Managers',
+      ],
     },
   ],
   experience: [
@@ -74,9 +110,12 @@ const defaultState: PortfolioState = {
       endDate: 'Present',
       logoUrl: '/logos/7eleven.svg',
       highlights: [
-        'Modernization (React 16->19 Upgrade)',
-        'System Performance (~15% Faster Load)',
-        'Monitoring & Reliability (New Relic)',
+        'AI Retail Chatbot & Intelligence Engine: Architected and deployed a pilot of an enterprise-grade AI-powered Retail Chatbot and Operational Intelligence platform using Python, React, FastAPI, LangGraph, and RAG with FAISS Vector DB and MongoDB aggregations for real-time semantic retrieval, boosting user engagement by 7%.',
+        'Modernization: Modernized live production systems by upgrading React 16 → 19, React Router, Redux, Webpack optimizations, Node.js upgrades, and technical debt reduction.',
+        'Internationalization: Built an application supporting multiple international languages, currencies, time zones, and formats using i18next, locale, and currency/date formatting.',
+        'System Performance: Improved performance via render optimizations, API handling, and Redis + memoization caching (~15% faster load times, faster data loads via DB indexing).',
+        'Monitoring & Reliability: Owned production incident resolution using New Relic (logs, metrics, traces), diagnosing root causes and shipping long-term fixes.',
+        'Design Decisions & Docs: Improved frontend architecture via reusable patterns and micro-frontend alignment; documented API contracts, PRDs, Tech Specs, and Confluence architecture pages.',
       ],
     },
     {
@@ -87,9 +126,9 @@ const defaultState: PortfolioState = {
       endDate: 'Jun 2022',
       logoUrl: '/logos/publicis.svg',
       highlights: [
-        'Testing Strategies (80%+ Test Coverage)',
-        'Accessibility (WCAG Implementation)',
-        'Component Library Development',
+        'Scalable UI Systems: Built scalable UI systems using JavaScript, Handlebars, SCSS.',
+        'Testing Strategies: Built testing strategies for multi-brand enterprise apps while maintaining 80%+ test coverage using Jest, React Testing Library (RTL), mocking, snapshots, and CI pipelines.',
+        'Accessibility (WCAG): Implemented accessibility using Semantic HTML, ARIA, keyboard navigation, focus management, and screen reader support.',
       ],
     },
     {
@@ -109,37 +148,28 @@ const defaultState: PortfolioState = {
       id: 'retail-intelligence',
       title: 'AI Powered Retail Intelligence',
       description:
-        'LLM-powered operational intelligence POC, improving user engagement by 20%.',
+        'Architected and deployed an enterprise-grade AI-powered Retail Chatbot and Operational Intelligence platform using Python, React, FastAPI, LangGraph, RAG, FAISS Vector DB, and MongoDB aggregations.',
       imageUrl: '/projects/retail-ai.png',
-      tags: ['FastAPI', 'LLM', 'VectorDB', 'Observability', '7-Eleven'],
+      tags: ['Python', 'FastAPI', 'LangGraph', 'RAG', 'FAISS', 'MongoDB', 'React'],
     },
     {
       id: 'resume-designer',
       title: 'Resume Designer AI Powered',
       description:
-        'ATS-compatible Resume Builder powered with AI APIs (Next.js, Gemini) + JD matching.',
+        'Intelligent, ATS-friendly resume generation platform featuring automated job-description matching, real-time feedback, and dual-mode document export (PDF/DOCX).',
       imageUrl: '/projects/resume-ai.png',
-      tags: ['Next.js', 'AI', 'Mistral'],
+      tags: ['Next.js', 'Python', 'FastAPI', 'GraphQL', 'Gemini', 'Mistral', 'Vector Embeddings'],
     },
   ],
   certifications: [
     {
       id: 'anthropic',
-      name: 'Anthropic Claude Code 101',
+      name: 'Claude Code 101: Certificate',
       issuer: 'Anthropic',
       description:
         'Certified in Claude Code 101 by Anthropic. Proficient in agentic AI workflows, prompt engineering, and integrating AI into development environments.',
       logoUrl: '/logos/anthropic.svg',
       badge: 'Verifiable',
-    },
-    {
-      id: 'aws',
-      name: 'AWS Certified Cloud Practitioner',
-      issuer: 'AWS',
-      description:
-        'Certified AWS Cloud Practitioner with expertise in cloud infrastructure, services, and best practices.',
-      logoUrl: '/logos/aws.svg',
-      badge: 'Badge',
     },
   ],
   education: [
@@ -148,8 +178,8 @@ const defaultState: PortfolioState = {
       institution: 'LNCT Bhopal',
       degree: 'B-Tech',
       field: 'Computer Science and Engineering',
-      startYear: '2017',
-      endYear: '2021',
+      startYear: '2014',
+      endYear: '2018',
       logoUrl: '/logos/lnct.svg',
     },
   ],
@@ -162,30 +192,18 @@ interface PortfolioStore extends PortfolioState {
 
 export const usePortfolioStore = create<PortfolioStore>((set) => ({
   ...defaultState,
-  updateFromParsedPdf: (data: ParsedResumeData) =>
+  updateFromParsedPdf: (data) =>
     set((state) => {
-      const newState: Partial<PortfolioState> = {};
+      const newState = { ...state };
 
-      // Update contact info
-      if (data.contact && Object.keys(data.contact).length > 0) {
-        newState.contact = { ...state.contact, ...data.contact };
-      }
-
-      // Update skills — merge by matching id or title
-      if (data.skills && data.skills.length > 0) {
-        const merged = [...state.skills];
-        data.skills.forEach((parsedSkill) => {
-          const existingIndex = merged.findIndex(
-            (s) =>
-              s.id === parsedSkill.id ||
-              (parsedSkill.title &&
-                s.title.toLowerCase().includes(parsedSkill.title.toLowerCase()))
-          );
-          if (existingIndex >= 0) {
-            merged[existingIndex] = { ...merged[existingIndex], ...parsedSkill } as typeof merged[0];
-          }
-        });
-        newState.skills = merged;
+      // Update contact info if present
+      if (data.contact) {
+        newState.contact = {
+          ...state.contact,
+          ...Object.fromEntries(
+            Object.entries(data.contact).filter(([_, v]) => v !== undefined && v !== '')
+          ),
+        };
       }
 
       // Update experience
@@ -196,7 +214,7 @@ export const usePortfolioStore = create<PortfolioStore>((set) => ({
             (e) =>
               e.id === parsedExp.id ||
               (parsedExp.company &&
-                e.company.toLowerCase() === parsedExp.company.toLowerCase())
+                e.company.toLowerCase().includes(parsedExp.company.toLowerCase()))
           );
           if (existingIndex >= 0) {
             merged[existingIndex] = { ...merged[existingIndex], ...parsedExp } as typeof merged[0];
